@@ -37,7 +37,7 @@ class _EcraJogoState extends State<EcraJogo>{
   bool _respondeu = false;
   /// Controla se está a carregar as perguntas ou não
   bool _loading = true;
-
+  /// Variável que guarda o número de respostas acertadas
   int _acertos = 0;
 
   /// Método que carrega as perguntas através do método _carregarPerguntas
@@ -69,7 +69,7 @@ class _EcraJogoState extends State<EcraJogo>{
       /// E se a resposta selecionada for a resposta correta (a pergunta atual que é representada 
       /// pelo indice atual na lista _perguntas corresponder ao valor da variável respostaCorreta)
       if (_respostaSelecionada == _perguntas[_indiceAtual].respostaCorreta) {
-
+        /// Incrementa o número de respostas corretas
         _acertos++;
         /// Adiciona pontos consoante o nível
         switch (widget.nivel) {
@@ -148,7 +148,7 @@ class _EcraJogoState extends State<EcraJogo>{
     }
   }
 
-  /// Neste widget é definido a "aparência" do que irá mostrar o ecrã
+  /// Neste widget é definida a "aparência" do que irá mostrar o ecrã
   @override
   Widget build(BuildContext context){
     /// Se a app estiver a carregar as perguntas

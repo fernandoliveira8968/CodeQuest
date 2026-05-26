@@ -166,10 +166,11 @@ class DatabaseHelper {
     await db.insert("resultados", resultado.paraMap());
   }
 
-  /// Retorna, no futuro, uma lisa, em map, do ranking de melhores utilizadores
+  /// Retorna, no futuro, uma lista, em map, do ranking de melhores utilizadores
   Future<List<Map<String, dynamic>>> obterRanking({String? categoria, int? nivel}) async {
     final db = await baseDados;
 
+      /// Converte a variável para int para que a base de dados consiga trabalhar com o valor do nível
       final nivelInt = int.parse(nivel.toString());
 
       return await db.rawQuery('''
@@ -180,6 +181,7 @@ class DatabaseHelper {
       FROM resultados r
       -- junta o utilizador ao seu id, criando o u.id
       INNER JOIN utilizadores u ON r.utilizador_id = u.id
+      -- onde a variável categoria e nivelInt é igual ao elemento da tabela
       WHERE r.categoria = "$categoria" AND r.nivel = "$nivelInt"
       -- agrupa os resultados do select por id de utilizador
       GROUP BY r.utilizador_id

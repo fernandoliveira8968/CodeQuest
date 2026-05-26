@@ -6,6 +6,7 @@ class EcraRanking extends StatefulWidget {
   /// Se for null, ou seja, não existir categoria, mostra o ranking geral
   final String? categoria;
   final int? nivel;
+  
   const EcraRanking({
     super.key, 
     this.categoria,

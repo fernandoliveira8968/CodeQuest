@@ -134,5 +134,5 @@ A aplicação utiliza SQLite para persistência local. As tabelas criadas são:
 --- Autores ---
 
 Fernando Miguel Gomes Oliveira
-Desenvolvido no âmbito da unidade curricular **Programação de Dispositivos Móveis II**  
+Desenvolvido no âmbito da unidade curricular Programação de Dispositivos Móveis II  
 CTESP - Desenvolvimento para Web & Dispositivos Móveis

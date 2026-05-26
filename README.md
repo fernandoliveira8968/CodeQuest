@@ -83,7 +83,7 @@ flutter run
 
 --- Estrutura do Projeto ---
 
-```
+
 lib/
 ├── main.dart                    # Ponto de entrada da aplicação
 ├── dados/

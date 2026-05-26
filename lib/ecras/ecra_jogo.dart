@@ -229,11 +229,11 @@ class _EcraJogoState extends State<EcraJogo>{
                   /// Então se a opcao for igual à resposta correta
                   if (opcao == pergunta.respostaCorreta) {
                     /// altera a opcao para cor verde
-                    cor = Colors.green.shade100;
+                    cor = Colors.green.shade300;
                     /// Se for a opcao errada
                   } else if (opcao == _respostaSelecionada) {
                     /// altera a cor para vermelho
-                    cor = Colors.red.shade100;
+                    cor = Colors.red.shade300;
                   }
                 }
                 /// É utilizado um detetor de gestos para quando o utilizador responder, bloquear as opções
@@ -246,7 +246,11 @@ class _EcraJogoState extends State<EcraJogo>{
                       _respostaSelecionada = opcao;
                     });
                   } ,
-                  child: Container(
+                  /// Este child contem uma animação de mudança de cor quando a resposta está certa ou errada
+                  child: AnimatedContainer(
+                    /// Que dura 300 milésimos de segundo
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
                     margin: const EdgeInsets.only(bottom: 12),
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(

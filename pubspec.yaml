@@ -1,0 +1,27 @@
+name: CodeQuest
+description: "CodeQuest - Jogo educativo de desenvolvimento web e mobile"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Base de dados local SQLite
+  sqflite: ^2.3.3
+  # Utilitário para encontrar o caminho da base de dados no dispositivo
+  path: ^1.9.0
+  # Hashing de passwords (segurança)
+  crypto: ^3.0.3
+  # Ícones extra
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

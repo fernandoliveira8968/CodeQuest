@@ -29,7 +29,7 @@ class EcraRankingMenu extends StatelessWidget {
                 /// Cria 3 botões nos quais as suas caracteristicas são definidas através do widget _botaoCategoriaRanking
                 _botaoCategoriaRanking(context, "Dart"),
                 const SizedBox(height: 16),
-                _botaoCategoriaRanking(context, "Flutter"),
+                _botaoCategoriaRanking(context, "HTML"),
                 const SizedBox(height: 16),
                 _botaoCategoriaRanking(context, "SQL"),
                 const SizedBox(height: 16),

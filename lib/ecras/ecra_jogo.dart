@@ -90,8 +90,6 @@ class _EcraJogoState extends State<EcraJogo>{
           /// Caso seja nível 3, desconta 15 pontos por cada resposta incorreta
           case 3: _pontuacao -= 15; break;
         }
-        /// Para evitar o negativo, se a pontuação for menor que 0, iguala a 0
-        if (_pontuacao < 0) _pontuacao = 0;
       }
     });
   }

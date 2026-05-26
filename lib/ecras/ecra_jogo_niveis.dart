@@ -37,7 +37,7 @@ class EcraNiveis extends StatelessWidget {
                 /// Cria 3 botões no qual as suas caracteristicas são definidas através do widget _botaoNiveis
                 _botaoNiveis(context, "Dart", "Dart"),
                 const SizedBox(height: 16),
-                _botaoNiveis(context, "Flutter", "Flutter"),
+                _botaoNiveis(context, "HTML", "HTML"),
                 const SizedBox(height: 16),
                 _botaoNiveis(context, "SQL", "SQL"),
               ],

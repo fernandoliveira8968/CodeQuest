@@ -17,7 +17,7 @@ A aplicação dispõe de testes de 3 tipos de categorias e 3 níveis de dificuld
 
 Temas dos testes:
 - Dart
-- Flutter
+- HTML
 - SQL
 
 Níveis de dificuldade:

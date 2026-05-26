@@ -83,7 +83,7 @@ flutter run
 
 --- Estrutura do Projeto ---
 
-
+```
 lib/
 ├── main.dart                    # Ponto de entrada da aplicação
 ├── dados/
@@ -106,7 +106,7 @@ lib/
     ├── utilizador.dart        # Modelo de utilizador
     ├── pergunta.dart          # Modelo de pergunta
     └── resultado.dart         # Modelo de resultado
-
+```
 
 
 --- Como Utilizar ---

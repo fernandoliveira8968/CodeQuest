@@ -131,7 +131,7 @@ A aplicação utiliza SQLite para persistência local. As tabelas criadas são:
 * As passwords são armazenadas com encriptação SHA-256, nunca em texto simples.
 
 
---- Autores ---
+--- Autor ---
 
 Fernando Miguel Gomes Oliveira
 Desenvolvido no âmbito da unidade curricular Programação de Dispositivos Móveis II  

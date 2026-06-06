@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../modelos/utilizador.dart';
 import 'ecra_jogo_niveis.dart';
 import 'ecra_ranking_menu.dart';
+import '../main.dart';
+import 'ecra_estatisticas.dart';
 
 class EcraMenu extends StatelessWidget {
   final Utilizador utilizador;
@@ -19,6 +21,35 @@ class EcraMenu extends StatelessWidget {
         title: const Text("Menu Principal"),
         /// Automaticamente remove o botão de voltar, pois levaria ao ecrã de login novamente
         automaticallyImplyLeading: false,
+
+        actions: [
+          ValueListenableBuilder<ThemeMode>(
+            valueListenable: modoTema,
+            builder: (context, temaAtual, child) {
+              /// Cria uma variável em bool que verifica o tema atual aplicado
+              final bool estaEscuro = Theme.of(context).brightness == Brightness.dark;
+
+              /// Retorna uma botão em formato de icone
+              return IconButton(
+                icon: Icon(
+                  /// Que cria uma condição que se está escuro, em tema escuro, define o icone para o icone de tema claro
+                  /// Caso contrário, o ícone apresentado é o de tema escuro
+                  estaEscuro ? Icons.light_mode : Icons.dark_mode
+                ),
+                /// Ao manter pressionado o botão, apresenta um pequeno texto de acessibilidade
+                /// Através de uma condição. Se está escuro, o icone que aparece é o de modo claro, então o texto será "Modo Claro"
+                /// Se não está escuro, apresenta o texto de "Modo Escuro"
+                tooltip: estaEscuro ? "Modo Claro" : "Modo Escuro",
+                onPressed: (){
+                  /// Quando pressionado o modo tema assume o valor da variável bool e define, através de uma condição, que tema aplicar
+                  modoTema.value = estaEscuro
+                  ? ThemeMode.light
+                  : ThemeMode.dark;
+                },
+              );
+            },
+          ),
+        ],
       ),
       /// um body que se apresenta numa "área segura", ou seja, 
       /// não se sobrepõe ao local da camera ou barra superior do sistema
@@ -71,6 +102,26 @@ class EcraMenu extends StatelessWidget {
                     icon: const Icon(Icons.leaderboard),
                     /// E uma etiqueta
                     label: const Text("Ver Ranking"),
+                  ),
+                ),
+                
+                const SizedBox(height: 16),
+                
+                SizedBox(
+                  /// Ocupa apenas o espaço necessário
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    /// Quando pressionado, envia para uma nova página
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EcraEstatisticas(utilizador: utilizador),
+                      ),
+                    ),
+                    /// Apresenta-se com um ícone
+                    icon: const Icon(Icons.percent),
+                    /// E uma etiqueta
+                    label: const Text("Estatisticas"),
                   ),
                 ),
               ],

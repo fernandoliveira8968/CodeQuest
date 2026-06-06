@@ -6,6 +6,8 @@ class Resultado{
   final int nivel;
   final String categoria; 
   final String data;
+  final int acertos;
+  final int totalPerguntas;
 
   /// Este construtor é utilizado para dar os resultados. 
   /// Recebe os dados da classe e atribui-os às propriedades
@@ -17,6 +19,8 @@ class Resultado{
     required this.nivel,
     required this.categoria,
     required this.data,
+    required this.acertos,
+    required this.totalPerguntas,
   });
 
   /// São atribuídas chaves-valor com os valores das variáveis para a base de dados
@@ -28,6 +32,8 @@ class Resultado{
     "nivel": nivel,
     "categoria": categoria,
     "data": data,
+    "acertos": acertos,
+    "total_perguntas": totalPerguntas,
     };
   }
 
@@ -42,6 +48,8 @@ class Resultado{
       nivel: map["nivel"],
       categoria: map["categoria"],
       data: map["data"],
+      acertos:map["acertos"] ?? 0,
+      totalPerguntas: map["total_perguntas"] ?? 1,
     );
   }
 

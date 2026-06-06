@@ -81,7 +81,7 @@ class _EcraJogoState extends State<EcraJogo>{
           case 3: _pontuacao += 30; break;
         }
       } else {
-        /// Desconta pontos consoante o nível, sem deixar ficar negativo
+        /// Desconta pontos consoante o nível
         switch (widget.nivel) {
           /// Caso seja nível 1, desconta 5 pontos por cada resposta incorreta
           case 1: _pontuacao -= 5; break;
@@ -90,6 +90,10 @@ class _EcraJogoState extends State<EcraJogo>{
           /// Caso seja nível 3, desconta 15 pontos por cada resposta incorreta
           case 3: _pontuacao -= 15; break;
         }
+      }
+      /// Se a pontuação for menor que 0, torna a pontuação igual a 0 para evitar valores negativos.
+      if (_pontuacao < 0){
+        _pontuacao = 0;
       }
     });
   }
@@ -112,6 +116,9 @@ class _EcraJogoState extends State<EcraJogo>{
     } 
     /// Caso contrário
     else {
+      if (_pontuacao < 0){
+        _pontuacao == 0;
+      }
       /// Cria uma variável resultado para guardar e apresentar o resultado final do utilizador
       final resultado = Resultado(
         /// Guarda o id do utilizador que é garantido nunca ser nulo (através do id!)
@@ -124,6 +131,10 @@ class _EcraJogoState extends State<EcraJogo>{
         categoria: widget.categoria,
         /// Guarda e converte a data atual para um formato internacionalmente conhecido
         data: DateTime.now().toIso8601String(),
+        /// Guarda o número de perguntas acertadas
+        acertos: _acertos,
+        /// Guarda o número de perguntas respondidas
+        totalPerguntas: _perguntas.length,
       );
         
       /// Guarda o resultado na base de dados
@@ -220,7 +231,8 @@ class _EcraJogoState extends State<EcraJogo>{
                 final opcao = opcoes[i];
                 final texto = textos[i];
 
-                Color cor = Colors.transparent;
+                /// Apresenta os blocos de pergunta conforme o tema selecionado
+                Color cor = Theme.of(context).colorScheme.surfaceContainerHighest;
 
                 /// Se já respondeu
                 if (_respondeu) {
@@ -276,11 +288,15 @@ class _EcraJogoState extends State<EcraJogo>{
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
+                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   /// Apresenta uma explicação para a pergunta
-                  child: Text(pergunta.explicacao),
+                  child: Text(pergunta.explicacao,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    )
+                  ),
                 ),
               
 

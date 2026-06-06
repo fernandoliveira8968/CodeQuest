@@ -61,6 +61,8 @@ class DatabaseHelper {
       nivel INTEGER NOT NULL,
       categoria TEXT NOT NULL,
       data TEXT NOT NULL,
+      acertos INTEGER NOT NULL DEFAULT 0,
+      total_perguntas INTEGER NOT NULL DEFAULT 1,
       FOREIGN KEY (utilizador_id) REFERENCES utilizadores(id)
       )
     ''');
@@ -84,6 +86,21 @@ class DatabaseHelper {
     /// Insere as perguntas na base de dados após as tabelas serem criadas
     await _inserirPerguntas(db);
   }
+
+    Future<List<Map<String, dynamic>>> obterEstatisticas(int utilizadorId) async {
+      final db = await baseDados;
+      return await db.rawQuery('''
+      SELECT
+        categoria,
+        nivel,
+        SUM(acertos) AS totalAcertos,
+        SUM(total_perguntas) AS totalPerguntas
+      FROM resultados
+      WHERE utilizador_id = ?
+      GROUP BY categoria, nivel
+      ORDER BY categoria, nivel
+      ''', [utilizadorId]);
+    } 
 
   /// Insere, no futuro, as perguntas na base de dados
   Future<void> _inserirPerguntas (Database db) async {
